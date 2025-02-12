@@ -1,0 +1,53 @@
+import { Component, Input,EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/models/product';
+import { ProductRepository } from 'src/models/product.repository';
+
+
+@Component({
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css'],
+  providers:[ProductService],
+})
+export class ProductComponent implements OnInit {
+
+
+
+
+   product:Product | undefined;
+   loading:boolean = false;
+
+
+
+
+
+
+  constructor(private route:ActivatedRoute,private productService:ProductService) {
+
+
+   }
+
+  ngOnInit(): void {
+      this.route.params.subscribe(params=>{
+        const id  = params['productId'];
+        this.loading = true;
+        this.productService.getProductById(id).subscribe(result=>{
+          this.product = {...result,id:id};
+          this.loading = false;
+        });
+
+      })
+
+      }
+
+  }
+
+
+
+
+
+
+
+

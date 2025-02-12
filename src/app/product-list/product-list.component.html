@@ -1,0 +1,90 @@
+<div *ngIf="!loading">
+    <div *ngIf="products.length > 0 ; else noProducts">
+      <ng-template [ngTemplateOutlet]="productList1" [ngTemplateOutletContext]="{products:products}"></ng-template>
+    </div>
+</div>
+
+<ng-template #productList1 let-products="products">
+    <div *ngFor="let item of products"   >
+      <div *ngIf="item.isActive" class="cart mb-3 p-1">
+        <div class="row">
+          <div class="col-3">
+                <img src="../../assets/images/{{item.imgUrl}}" alt="" class="img-fluid rounded-start">
+          </div>
+          <div class="col-9">
+              <div class="card-body">
+                  <h4 class="card-title">{{item.name}}</h4>
+                  <p class="cart-text">{{item.price | currency:'₺'}}</p>
+                  <a routerLink="/products/{{item.id}}" class="btn btn-primary">Product Details</a>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</ng-template>
+
+<ng-template #noProducts>
+
+  <div class="alert alert-warning" *ngIf="products.length  == 0">
+    no products
+   </div>
+</ng-template>
+
+
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
