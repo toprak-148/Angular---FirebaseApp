@@ -11,11 +11,11 @@ export class AuthService {
 
 
 
-  api_key:string = "AIzaSyBMFDIO6Ijli-HyBK-2EDWWCTIK5L48TUA";
+  api_key:string = "api_key_information";
   user = new BehaviorSubject<User|null>(null);
 
-  createUrl:string="https://identitytoolkit.googleapis.com/v1/accounts:signUp?key="
-  loginUrl:string =  "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
+  createUrl:string="firebase_create_url"
+  loginUrl:string =  "firebase_create_url";
 
   constructor(private http:HttpClient) { }
 
